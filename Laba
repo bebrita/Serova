@@ -1,0 +1,94 @@
+import java.lang.Math;
+
+class Laba{
+    public static void main(String[] args) {
+        long[] c = new long[13]; //задаем первый массив с нечетными числами
+        for (int i = 0; i < 13; i++){
+            c[i]=16-i;
+        }
+        double[] x_array = new double[19]; //задаем второй массив с рандомными числами
+        for (int i = 0; i < 19; i++){
+            x_array[i] = 6*Math.random() - 2;
+        }
+        int[] for_two = new int[6]; //задаем список значений c[i][j] для второго класса объектов
+        for (int i = 0; i< 5; i++){
+            for_two[i] = i*2 + 4;
+        }
+        for_two[5]=7;
+        double[][] a = new double[13][19]; //задаем массив, в котором будут хранитьсч нужные нам значения
+        for (int i = 0; i<13; i++){
+            for (int j = 0; j<19; j++){
+                double x = x_array[j]; //для упрощения
+                if (c[i] == 14){
+                    a[i][j] = Math.cos(Math.cos(Math.atan((x+1)/6)));
+                    continue;
+                }else{
+                    for (int z = 0; z<6;z++){
+                        if (c[i] == for_two[z]){
+                            double first = Math.pow(0.25 / (1 - (x / (x + 0.75))), 3); //добавление переменной из-за ограниченности длины строки
+                            a[i][j] = Math.log(Math.pow(Math.pow(Math.sin(x),2),first));
+                            break;
+                        }
+                        if (c[i] != for_two[z] && c[i] != 14){
+                            double first = Math.pow(x/3,2)*(4-Math.log(Math.abs(x))); //добавление переменной из-за ограниченности длины строки
+                            a[i][j] = Math.sin(Math.sin(Math.pow(Math.pow(x/3,2),first)));
+                        }
+                    }
+                }
+            }
+        }
+        for (int i = 0; i<13; i++) {
+            for (int j = 0; j < 19; j++) {
+                double scale = Math.pow(10, 2);
+                a[i][j] = Math.ceil(a[i][j] * scale) / scale;  //округлим до 2 знака после запятой
+            }
+        }
+        double[][] table = new double[14][20]; //создадим таблицу с получ значениями, чтобы вывести ее на экран
+        table[0][0] = 0;
+        for (int i =1; i<14; i++){
+            table[i][0] = c[i-1];
+        }
+        for(int i =1;i<20;i++){
+            table[0][i] = x_array[i-1];
+        }
+        for (int i = 1; i<14; i++) {
+            for (int j = 1; j < 20; j++) {
+                table[i][j] = a[i-1][j-1];
+            }
+        }
+        int max_len = 0;  //найдем максимальную длину для таблицы
+        for (int i = 0; i<14; i++) {
+            for (int j = 0; j < 20; j++) {
+                String total = String.valueOf(table[i][j]);
+                int len = total.length();
+                if (len > max_len){
+                    max_len = len;
+                }
+            }
+        }
+        for(int i = 0; i<14; i++) {
+            for (int j = 0; j < 20; j++) {
+                String total = String.valueOf(table[i][j]);
+                int len = total.length();
+                if (j == 0) {
+                    total = total.substring(0, total.length() - 2);
+                }
+                System.out.print(total);
+                String[] total_ar = total.split("");
+                if(len == 3 && j != 0 && i !=0 && total_ar[0].equals("-")){
+                    System.out.print("0");
+                    len +=1;
+                }
+                if(len == 4 && j != 0 && i !=0 && total_ar[0].equals("-")){
+                    System.out.print("0");
+                    len+=1;
+                }
+                for (int z = 0; z <(max_len-len);z++){
+                    System.out.print(" ");
+                }
+                System.out.print("|");
+            }
+            System.out.println();
+        }
+    }
+}
