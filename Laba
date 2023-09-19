@@ -66,124 +66,47 @@ class Laba{
                 }
             }
         }
-        for(int i = 0; i<14; i++) {
-            for (int j = 0; j < 6; j++) {
-                String total = String.valueOf(table[i][j]);
+        int start = 1;
+        int finish = 6;
+        for (int r = 0; r<4;r++) {
+            for (int i = 0; i < 14; i++) {
+                String total = String.valueOf(table[i][0]);
                 int len = total.length();
-                if (j == 0) {
-                    total = total.substring(0, total.length() - 2);
-                }
+                total = total.substring(0, total.length() - 2);
                 System.out.print(total);
-                String[] total_ar = total.split("");
-                if(len == 3 && j != 0 && i !=0 && total_ar[0].equals("-")){
-                    System.out.print("0");
-                    len +=1;
-                }
-                if(len == 4 && j != 0 && i !=0 && total_ar[0].equals("-")){
-                    System.out.print("0");
-                    len+=1;
-                }
-                for (int z = 0; z <(max_len-len);z++){
-                    System.out.print(" ");
-                }
-                System.out.print("|");
-            }
-            System.out.println();
-        }
-        System.out.print("--------------------------------------------------------------");
-        System.out.println("--------------------------------------------------------------");
-        for(int i = 0; i<14; i++) {
-            String total = String.valueOf(table[i][0]);
-            int len = total.length();
-            total = total.substring(0, total.length() - 2);
-            System.out.print(total);
-            for (int z = 0; z < (max_len - len); z++) {
-                System.out.print(" ");
-            }
-            System.out.print("|");
-            for (int j = 6; j < 11; j++) {
-                total = String.valueOf(table[i][j]);
-                len = total.length();
-                System.out.print(total);
-                String[] total_ar = total.split("");
-                if (len == 3 && j != 0 && i != 0 && total_ar[0].equals("-")) {
-                    System.out.print("0");
-                    len += 1;
-                }
-                if (len == 4 && j != 0 && i != 0 && total_ar[0].equals("-")) {
-                    System.out.print("0");
-                    len += 1;
-                }
                 for (int z = 0; z < (max_len - len); z++) {
                     System.out.print(" ");
                 }
                 System.out.print("|");
+                for (int j = start; j < finish; j++) {
+                    total = String.valueOf(table[i][j]);
+                    len = total.length();
+                    if (j == 0) {
+                        total = total.substring(0, total.length() - 2);
+                    }
+                    System.out.print(total);
+                    String[] total_ar = total.split("");
+                    if (len == 3 && j != 0 && i != 0 && total_ar[0].equals("-")) {
+                        System.out.print("0");
+                        len += 1;
+                    }
+                    if (len == 4 && j != 0 && i != 0 && total_ar[0].equals("-")) {
+                        System.out.print("0");
+                        len += 1;
+                    }
+                    for (int z = 0; z < (max_len - len); z++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print("|");
+                }
+                System.out.println();
             }
-            System.out.println();
+            System.out.print("--------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------");
+            start += 5;
+            finish += 5;
+            if (finish > 20)
+                finish = 20;
         }
-        System.out.print("--------------------------------------------------------------");
-        System.out.println("--------------------------------------------------------------");
-        for(int i = 0; i<14; i++) {
-            String total = String.valueOf(table[i][0]);
-            int len = total.length();
-            total = total.substring(0, total.length() - 2);
-            System.out.print(total);
-            for (int z = 0; z < (max_len - len); z++) {
-                System.out.print(" ");
-            }
-            System.out.print("|");
-            for (int j = 11; j < 16; j++) {
-                total = String.valueOf(table[i][j]);
-                len = total.length();
-                System.out.print(total);
-                String[] total_ar = total.split("");
-                if (len == 3 && j != 0 && i != 0 && total_ar[0].equals("-")) {
-                    System.out.print("0");
-                    len += 1;
-                }
-                if (len == 4 && j != 0 && i != 0 && total_ar[0].equals("-")) {
-                    System.out.print("0");
-                    len += 1;
-                }
-                for (int z = 0; z < (max_len - len); z++) {
-                    System.out.print(" ");
-                }
-                System.out.print("|");
-            }
-            System.out.println();
-        }
-        System.out.print("--------------------------------------------------------------");
-        System.out.println("--------------------------------------------------------------");
-        for(int i = 0; i<14; i++) {
-            String total = String.valueOf(table[i][0]);
-            int len = total.length();
-            total = total.substring(0, total.length() - 2);
-            System.out.print(total);
-            for (int z = 0; z < (max_len - len); z++) {
-                System.out.print(" ");
-            }
-            System.out.print("|");
-            for (int j = 16; j < 20; j++) {
-                total = String.valueOf(table[i][j]);
-                len = total.length();
-                System.out.print(total);
-                String[] total_ar = total.split("");
-                if (len == 3 && j != 0 && i != 0 && total_ar[0].equals("-")) {
-                    System.out.print("0");
-                    len += 1;
-                }
-                if (len == 4 && j != 0 && i != 0 && total_ar[0].equals("-")) {
-                    System.out.print("0");
-                    len += 1;
-                }
-                for (int z = 0; z < (max_len - len); z++) {
-                    System.out.print(" ");
-                }
-                System.out.print("|");
-            }
-            System.out.println();
-        }
-        System.out.print("--------------------------------------------------------------");
-        System.out.println("--------------------------------------------------------------");
     }
 }
